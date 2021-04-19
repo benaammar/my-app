@@ -1,24 +1,35 @@
-import logo from './logo.svg';
+import 'bootstrap/dist/css/bootstrap.min.css';
 import './App.css';
+import ListUtilisateur from "./components/utilisateur/ListUtilisateur"
+import HeaderComponent from './components/HeaderComponent';
+import FooterComponent from './components/FooterComponent';
+import{BrowserRouter as Router,Route,Switch}from "react-router-dom"
+import AjoutUtilisateurComponent from './components/utilisateur/AjoutUtilisateurComponent';
+import Acceuil from './components/Acceuil';
+import MedecinRechercheComponent from './components/medecinInfo/MedecinRechercheComponent';
 
 function App() {
   return (
-    <div className="App">
-      <header className="App-header">
-        <img src={logo} className="App-logo" alt="logo" />
-        <p>
-          Edit <code>src/App.js</code> and save to reload.
-        </p>
-        <a
-          className="App-link"
-          href="https://reactjs.org"
-          target="_blank"
-          rel="noopener noreferrer"
-        >
-          Learn React
-        </a>
-      </header>
+    <div>
+      <Router>
+          
+            <HeaderComponent/>
+            <div className="Container">
+              <switch> 
+                <Route path="/" exact component={Acceuil}></Route>
+                <Route path="/utilisateurs" component={ListUtilisateur}></Route>
+                <Route path="/medecin-recherche"component={MedecinRechercheComponent}></Route>
+                <Route path="/ajout-utilisateur" component={AjoutUtilisateurComponent}></Route>
+
+                
+                
+              </switch>
+            </div>
+            <FooterComponent/>
+          
+      </Router>
     </div>
+    
   );
 }
 
